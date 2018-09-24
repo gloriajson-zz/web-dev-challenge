@@ -15,7 +15,7 @@ class Favourites extends Component{
   }
 
   handleRemove(){
-    this.props.dispatch(removeRepo(this.textInput.value));
+    this.props.dispatch(removeRepo());
   }
 
 //full_name, html_url, language, tags_url
@@ -45,4 +45,4 @@ const mapStateToProps = (state) => ({
 }
 )
 
-export default Favourites;//connect(mapStateToProps, mapDispatchToProps)(Favourites);
+export default connect(mapStateToProps)(Favourites);
