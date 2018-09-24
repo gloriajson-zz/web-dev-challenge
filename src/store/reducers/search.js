@@ -20,14 +20,16 @@ export default function(state = initialState, action){
         tag: action.payload
       }
     case ADD_REPO:
+      console.log("reducer add repo");
+      console.log(action.payload);
       return {
         ...state,
-        favourites: action.payload.repo
+        favourites: action.payload
       }
     case REMOVE_REPO:
       return {
         ...state,
-        favourites: action.payload.repo
+        favourites: action.payload
       }
     default:
       return state;

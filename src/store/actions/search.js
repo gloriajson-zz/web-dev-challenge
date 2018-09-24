@@ -9,7 +9,6 @@ export const REMOVE_REPO = 'REMOVE_REPO';
 
 export const fetchRepos = (repoName, callback) => dispatch => {
   let url = reposAPI+repoName+"&per_page=10";
-
   axios.get(url).then(res => {
     //let { repos } = res.data;
     console.log(res.data.items);
@@ -37,15 +36,19 @@ export const fetchTag = (tagURL, callback) => dispatch => {
 }
 
 export const addRepo = (repo) => dispatch =>{
-  return{
+  console.log("add repo action called");
+  console.log(repo);
+  return dispatch({
     type: ADD_REPO,
     payload: repo
-  }
+  });
 }
 
 export const removeRepo = (repo) => dispatch => {
-  return{
+  console.log("remove repos action called");
+  console.log(repo);
+  return dispatch({
     type: REMOVE_REPO,
     payload: repo
-  }
+  });
 }

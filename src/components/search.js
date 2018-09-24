@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { fetchRepos, fetchTag } from '../store/actions/search';
+import { fetchRepos, fetchTag, addRepo } from '../store/actions/search';
 import axios from 'axios';
 
 class SearchPage extends Component{
@@ -11,6 +11,7 @@ class SearchPage extends Component{
     this.state = {
       repos: [],
       tags: {},
+      favourites: [],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
@@ -48,9 +49,17 @@ class SearchPage extends Component{
     }
   }
 
- handleAdd = (id) => {
-   console.log("Add repo to favourites");
-   console.log(id);
+ handleAdd = (repo) => {
+   //add repo to the store
+   console.log(JSON.stringify(repo));
+   console.log("Add repo "+repo.id+"to favourites");
+   let repoToAdd = {
+     id: repo.id,
+     name: repo.full_name,
+     language: repo.language,
+     tag: this.state.tags[repo.id]
+   }
+   this.props.dispatch(addRepo(repoToAdd));
  }
 
   render(){
@@ -77,12 +86,13 @@ class SearchPage extends Component{
           </thead>
           <tbody>
             {this.state.repos.map(data => {
+
               return(
                 <tr key={data.id}>
                   <td>{data.full_name}</td>
                   <td>{data.language}</td>
                   <td>{this.state.tags[data.id]}</td>
-                  <td><button className='add' value={data.id} onClick={this.handleAdd}>Add</button></td>
+                  <td><button className='add' value={data.id} onClick={() => this.handleAdd(data)}>Add</button></td>
                 </tr>);
             })}
           </tbody>
@@ -95,8 +105,8 @@ class SearchPage extends Component{
 
 const mapStateToProps = state => ({
   tag: state.tag,
-  repos: state.repos
-
+  repos: state.repos,
+  favourites: state.favourites
 });
 
 export default connect(mapStateToProps)(SearchPage);

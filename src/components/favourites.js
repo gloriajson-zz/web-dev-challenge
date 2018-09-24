@@ -7,18 +7,20 @@ class Favourites extends Component{
   constructor(props){
     super(props);
     this.state = {
-      favourites: [],
+      favourites: [{id: 1, name: 'Test', language: 'C', tag: 'v1.0'}],
       repos: this.props.repos,
       tags: this.props.tags
     }
     this.handleRemove = this.handleRemove.bind(this);
   }
 
-  handleRemove(){
+  handleRemove(repo){
+    console.log(repo);
+    console.log(this.state.repos);
+    //remove repo from favourites
     this.props.dispatch(removeRepo());
   }
 
-//full_name, html_url, language, tags_url
   render(){
     return(
       <div className='fav'>
@@ -32,7 +34,15 @@ class Favourites extends Component{
           </tr>
         </thead>
         <tbody>
-        <tr><td>Example</td><td>C</td><td>v1.0</td><td><button className='remove' onClick={this.handleRemove}>Remove</button></td></tr>
+        {this.state.favourites.map(data => {
+          return(
+            <tr key={data.id}>
+              <td>{data.name}</td>
+              <td>{data.language}</td>
+              <td>{data.tag}</td>
+              <td><button className='remove' value={data.id} onClick={() => this.handleRemove(data)}>Remove</button></td>
+            </tr>);
+        })}
         </tbody>
       </table>
       </div>
@@ -41,7 +51,9 @@ class Favourites extends Component{
 }
 
 const mapStateToProps = (state) => ({
-
+  tag: state.tags,
+  repos: state.repos,
+  favourites: state.favourites
 }
 )
 
