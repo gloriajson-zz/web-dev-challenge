@@ -1,0 +1,40 @@
+.btn-custom{
+  background-color: #7e24fa;
+  color: white;
+  width: 100px;
+}
+
+
+.table-borderless > tbody > tr > td,
+.table-borderless > tbody > tr > th,
+.table-borderless > tfoot > tr > td,
+.table-borderless > tfoot > tr > th,
+.table-borderless > thead > tr > td,
+.table-borderless > thead > tr > th {
+    border: none;
+}
+
+.searchBar{
+  width: 100%;
+}
+
+.formWrap{
+  padding: 30px;
+}
+
+.tableWrap{
+  padding-top: 30px;
+}
+
+.formPad{
+  padding-left: 10px;
+}
+
+.add{
+  background:none!important;
+  color:#7e24fa;
+  text-decoration: underline;
+  border:none;
+  font: inherit;
+  cursor: pointer;
+}

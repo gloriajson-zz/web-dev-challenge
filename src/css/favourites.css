@@ -1,0 +1,28 @@
+html, body{
+  height:100%;
+}
+
+.fav {
+  background-color: #f4ecff;
+  padding: 30px;
+  min-height: 100%;
+  flex: 0 0 240px;
+}
+
+.table-borderless > tbody > tr > td,
+.table-borderless > tbody > tr > th,
+.table-borderless > tfoot > tr > td,
+.table-borderless > tfoot > tr > th,
+.table-borderless > thead > tr > td,
+.table-borderless > thead > tr > th {
+    border: none;
+}
+
+.remove{
+  background:none!important;
+  color:#7e24fa;
+  text-decoration: underline;
+  border:none;
+  font: inherit;
+  cursor: pointer;
+}
