@@ -1,12 +1,9 @@
-html, body{
-  height:100%;
-}
-
 .fav {
   background-color: #f4ecff;
   padding: 30px;
+  height: stretch;
   min-height: 100%;
-  flex: 0 0 240px;
+  flex: 1;
 }
 
 .table-borderless > tbody > tr > td,
@@ -16,6 +13,7 @@ html, body{
 .table-borderless > thead > tr > td,
 .table-borderless > thead > tr > th {
     border: none;
+    height: 100%;
 }
 
 .remove{
